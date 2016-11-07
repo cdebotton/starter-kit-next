@@ -1,0 +1,16 @@
+{
+  "presets": ["latest", "react", "stage-0", ["env", {
+    "loose": true
+  }]],
+  "plugins": [
+    "transform-flow-strip-types"
+  ],
+  "env": {
+    "dev": {
+      "plugins": ["react-hot-loader/babel"]
+    },
+    "test": {
+      "plugins": ["istanbul"]
+    }
+  }
+}

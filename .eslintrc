@@ -1,0 +1,21 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "airbnb",
+    "plugin:flowtype/recommended"
+  ],
+  "plugins": [
+    "flowtype"
+  ],
+  "env": {
+    "browser": true,
+    "node": true,
+    "mocha": true
+  },
+  "rules": {
+    "no-duplicate-imports": 0,
+    "arrow-parens": ["error", "always"],
+    "react/jsx-filename-extension": 0,
+    "no-param-reassign": ["error", { "props": false }]
+  }
+}

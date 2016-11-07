@@ -1,0 +1,7 @@
+thumbs.db
+npm-debug.log*
+node_modules/
+dist/
+._*
+.DS_Store
+
