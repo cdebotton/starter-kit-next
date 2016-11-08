@@ -1,0 +1,44 @@
+# Starter Kit
+## About
+This is a universal react starter kit with a GraphQL (Apollo) API.
+
+Tools used:
+- react
+- redux
+- react-redux
+- react-router
+- apollo-client
+- apollo-react
+- apollo-server
+- graphql
+- graphql-tools
+- flowtype
+- eslint
+- koa
+- koa-router
+- bookshelf
+- knex
+- pg (postgresql)
+- postcss
+- postcss-nextcss
+- webpack
+- babel
+- css-modules-require-hook
+- cross-env
+- yarn
+
+## Setup
+1. `cd` into project root
+2. Run `yarn install`
+3. `touch .env` to create an environment file, which should look like:
+
+```
+DATABASE_URL=postgresql://localhost/pgdemo
+ENV=development
+PORT=3000
+DEV_PORT=4000
+```
+
+4. Start posgtres server
+5. `npm bin`/knex migrate:latest
+6. Run `npm run dev` to start server.

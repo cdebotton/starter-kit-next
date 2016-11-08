@@ -1,5 +1,7 @@
 /* @flow */
 
+require('dotenv').config();
+
 export const ENV: string = (process.env.NODE_ENV || 'development').trim();
 export const DEV: boolean = ENV === 'development';
 export const PROD: boolean = ENV === 'production';
