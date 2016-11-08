@@ -7,7 +7,12 @@ import thunk from 'redux-thunk';
 
 import createRootReducer from './reducers';
 
-const configureStore = (client, preloadedState) => {
+type Client = {
+  reducer: () => any;
+  middleware: () => Function;
+};
+
+const configureStore = (client: Client, preloadedState: any) => {
   const rootReducer = createRootReducer(client);
 
   const store = createStore(

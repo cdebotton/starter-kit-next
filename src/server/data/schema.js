@@ -7,7 +7,7 @@ const schema = `
 type Author {
   id: Int!
   firstName: String
-  author: Author
+  lastName: String
   posts: [Post]
 }
 

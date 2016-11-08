@@ -12,7 +12,8 @@ import configureStore from '../shared/configureStore';
 import '../shared/css/base.css';
 
 const rootEl = document.getElementById('app');
-const initialState = JSON.parse(document.getElementById('__STATE__').innerText);
+const json: string = document.getElementById('__STATE__').textContent;
+const initialState = JSON.parse(json);
 const history = createHistory();
 
 const client = new ApolloClient();

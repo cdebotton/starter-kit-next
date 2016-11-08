@@ -26,6 +26,10 @@ const posts: Post[] = [
   { id: 3, authorId: 2, title: 'Advanced GraphQL', votes: 1 },
 ];
 
+type MutationProps = {
+  postId: number;
+}
+
 const resolveFunctions = {
   Query: {
     posts(): Post[] {
@@ -33,7 +37,7 @@ const resolveFunctions = {
     },
   },
   Mutation: {
-    upvotePost(_, { postId }): Post {
+    upvotePost(_: any, { postId }: MutationProps): Post {
       const post = posts.find((item) => item.id === postId);
       if (!post) {
         throw new Error(`Couldn't find post with id ${postId}`);

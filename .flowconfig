@@ -9,3 +9,6 @@
 suppress_comment= \\(.\\|\n\\)*\\$FlowFixMe
 suppress_comment= \\(.\\|\n\\)*\\$FlowIgnore
 module.system=haste
+
+[version]
+0.34.0
