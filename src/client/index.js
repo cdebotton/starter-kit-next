@@ -7,16 +7,17 @@ import Router from 'react-router/BrowserRouter';
 import { ApolloProvider } from 'react-apollo';
 import createHistory from 'history/createBrowserHistory';
 import { render } from 'react-dom';
-
-import client from '../shared/apolloClient';
+import ApolloClient from 'apollo-client';
 import configureStore from '../shared/configureStore';
 import '../shared/css/base.css';
 
 const rootEl = document.getElementById('app');
+const initialState = JSON.parse(document.getElementById('__STATE__').innerText);
 const history = createHistory();
 
-const preloadedState = window.__PRELOADED_STATE__;
-const store = configureStore(preloadedState);
+const client = new ApolloClient();
+
+const store = configureStore(client, initialState);
 
 const renderApp = (mount) => {
   const App = require('../shared/components/App').default;

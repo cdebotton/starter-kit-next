@@ -3,5 +3,8 @@ html(lang='en')
   head
     title BU Starter Kit
   body
-    div#app!=markup
-    script(src=resourcePath + 'bundle.js')
+    div#app
+      != markup
+    script(id='__STATE__', type='application/json')
+      != state
+    script(type='text/javascript', src=resourcePath + 'bundle.js')

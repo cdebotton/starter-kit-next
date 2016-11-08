@@ -5,10 +5,11 @@ import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
-import client from './apolloClient';
-import rootReducer from './reducers';
+import createRootReducer from './reducers';
 
-const configureStore = (preloadedState) => {
+const configureStore = (client, preloadedState) => {
+  const rootReducer = createRootReducer(client);
+
   const store = createStore(
     rootReducer,
     preloadedState,
@@ -20,7 +21,8 @@ const configureStore = (preloadedState) => {
   if (module.hot) {
     // $FlowIgnore: Flow doesn't understand module.hot.accept.
     module.hot.accept('./reducers', () => {
-      const nextRootReducer = require('./reducers').default;
+      const nextCreateRootReducer = require('./reducers').default;
+      const nextRootReducer = nextCreateRootReducer(client);
       store.replaceReducer(nextRootReducer);
     });
   }
