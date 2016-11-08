@@ -4,10 +4,11 @@
 
 import React from 'react';
 import Router from 'react-router/BrowserRouter';
-import { Provider } from 'react-redux';
+import { ApolloProvider } from 'react-apollo';
 import createHistory from 'history/createBrowserHistory';
 import { render } from 'react-dom';
 
+import client from '../shared/apolloClient';
 import configureStore from '../shared/configureStore';
 import '../shared/css/base.css';
 
@@ -21,11 +22,11 @@ const renderApp = (mount) => {
   const App = require('../shared/components/App').default;
 
   render(
-    <Provider store={store}>
+    <ApolloProvider store={store} client={client}>
       <Router history={history}>
         {(router) => <App router={router} />}
       </Router>
-    </Provider>,
+    </ApolloProvider>,
     mount,
   );
 };

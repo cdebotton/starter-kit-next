@@ -3,14 +3,20 @@
 import Koa from 'koa';
 import Debug from 'debug';
 import Router from 'koa-router';
+import compress from 'koa-compress';
+import bodyParser from 'koa-bodyparser';
 import Pug from 'koa-pug';
 import React from 'react';
-import { Provider } from 'react-redux';
+import { ApolloProvider } from 'react-apollo';
 import { renderToString } from 'react-dom/server';
 import { ServerRouter, createServerRenderContext } from 'react-router';
+import { graphqlKoa } from 'graphql-server-koa';
+import { printSchema } from 'graphql/utilities/schemaPrinter';
 
 import 'css-modules-require-hook/preset';
 
+import client from '../shared/apolloClient';
+import schema from './data/schema';
 import configureStore from '../shared/configureStore';
 import App from '../shared/components/App';
 import { DEV, DEV_PORT, PORT, DEBUG_TARGET } from '../config';
@@ -23,21 +29,30 @@ const app = new Koa();
 const debug = new Debug(DEBUG_TARGET);
 
 pug.use(app);
+
+router.post('/graphql', graphqlKoa({ schema }));
+router.get('/schema', (ctx) => {
+  ctx.body = printSchema(schema);
+});
+
+app.use(compress());
+app.use(bodyParser());
 app.use(router.routes());
+app.use(router.allowedMethods());
 
 router.get('*', (ctx) => {
   const resourcePath = DEV ? `http://localhost:${DEV_PORT}/dist/` : '/dist/';
 
   const context = createServerRenderContext();
   let markup = renderToString(
-    <Provider store={store}>
+    <ApolloProvider store={store} client={client}>
       <ServerRouter
         context={context}
         location={ctx.req.url}
       >
         {(routerContext) => <App router={routerContext} />}
       </ServerRouter>
-    </Provider>,
+    </ApolloProvider>,
   );
 
   const result = context.getResult();

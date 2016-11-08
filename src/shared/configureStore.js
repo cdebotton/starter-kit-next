@@ -5,6 +5,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
+import client from './apolloClient';
 import rootReducer from './reducers';
 
 const configureStore = (preloadedState) => {
@@ -12,7 +13,7 @@ const configureStore = (preloadedState) => {
     rootReducer,
     preloadedState,
     composeWithDevTools(
-      applyMiddleware(thunk),
+      applyMiddleware(client.middleware(), thunk),
     ),
   );
 
