@@ -2,26 +2,13 @@
 ## About
 This is a universal react starter kit with a GraphQL (Apollo) API.
 
-### View Layer
-react / redux / react-redux / react-router
-
-### API Layer
-apollo-client / apollo-react / apollo-server
-
-### Graph Layer
-graphql / graphql-tools
-
-### Developer tools
-flowtype / eslint
-
-### Server
-koa / koa-router
-
-### ORM
-bookshelf / knex / pg (postgresql)
-
-### Styles
-postcss / postcss-nextcss
+* react / redux / react-redux / react-router
+* apollo-client / apollo-react / apollo-server
+* graphql / graphql-tools
+* flowtype / eslint
+* koa / koa-router
+* bookshelf / knex / pg (postgresql)
+* postcss / postcss-nextcss
 
 ### Build tools
 webpack / babel / css-modules-require-hook
