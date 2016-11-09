@@ -1,19 +1,29 @@
 /* @flow */
 
-import { SET_COUNTER, INCREMENT_COUNTER, DECREMENT_COUNTER } from '../actions/counterActions';
-
 export type State = {
   count: number;
 };
 
-type Action = {
+export type Action = {
   type: string;
-  payload: number;
+  payload?: number;
 };
 
-const initialState = {
+const initialState: State = {
   count: 0,
 };
+
+export const SET_COUNTER = 'SET_COUNTER';
+export const INCREMENT_COUNTER = 'INCREMENT_COUNTER';
+export const DECREMENT_COUNTER = 'DECREMENT_COUNTER';
+
+export const increment = (): Action => ({
+  type: INCREMENT_COUNTER,
+});
+
+export const decrement = (): Action => ({
+  type: DECREMENT_COUNTER,
+});
 
 const counter = (state: State = initialState, action: Action) => {
   switch (action.type) {

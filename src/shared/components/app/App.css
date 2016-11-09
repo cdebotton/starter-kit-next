@@ -1,6 +1,9 @@
-.root {
-  
+html {
+  margin: 2rem 4rem;
+  font-size: 62.75%;
 }
+
+.root {}
 
 .navigation {
   padding: 2rem 0;
@@ -13,4 +16,8 @@
 
 .navigation a+a {
   margin-left: 1rem;
+}
+
+.activeLink {
+  font-weight: bold;
 }

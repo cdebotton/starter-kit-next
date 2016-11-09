@@ -19,8 +19,8 @@ import 'css-modules-require-hook/preset';
 import 'isomorphic-fetch';
 
 import schema from './data/schema';
-import configureStore from '../shared/configureStore';
-import App from '../shared/components/App';
+import configureStore from '../shared/state/configureStore';
+import App from '../shared/components/app/App';
 import { DEV, DEV_PORT, PORT, DEBUG_TARGET } from '../config';
 
 const router = new Router();

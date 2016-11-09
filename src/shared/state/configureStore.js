@@ -5,7 +5,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
-import createRootReducer from './reducers';
+import createRootReducer from './rootReducer';
 
 type Client = {
   reducer: () => any;
@@ -25,8 +25,8 @@ const configureStore = (client: Client, preloadedState: any) => {
 
   if (module.hot) {
     // $FlowIgnore: Flow doesn't understand module.hot.accept.
-    module.hot.accept('./reducers', () => {
-      const nextCreateRootReducer = require('./reducers').default;
+    module.hot.accept('./rootReducer', () => {
+      const nextCreateRootReducer = require('./rootReducer').default;
       const nextRootReducer = nextCreateRootReducer(client);
       store.replaceReducer(nextRootReducer);
     });

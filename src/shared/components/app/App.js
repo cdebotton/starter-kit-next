@@ -7,13 +7,13 @@ import Miss from 'react-router/Miss';
 
 import type { Element } from 'react';
 
-import Home from './Home';
-import Entries from './Entries';
-import Users from './Users';
-import Admin from './Admin';
+import Home from '../../pages/home/Home';
+import Entries from '../../pages/entries/Entries';
+import Users from '../../pages/users/Users';
+import Admin from '../../pages/admin/Admin';
 
-import { root, navigation } from '../css/layout.css';
-import { activeLink, h1 } from '../css/typography.css';
+import './typography.css';
+import { root, navigation, activeLink } from './App.css';
 
 type Props = {
   router: {
@@ -25,7 +25,7 @@ type Props = {
 
 const App = (props: Props): Element<any> => (
   <div className={root}>
-    <h1 className={h1}>Starter Kit<sup>(bu)</sup></h1>
+    <h1>Starter Kit<sup>(bu)</sup></h1>
     <nav className={navigation}>
       <Link activeOnlyWhenExact activeClassName={activeLink} to="/">Home</Link>
       <Link activeClassName={activeLink} to="/entries">Entries</Link>

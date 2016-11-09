@@ -5,10 +5,10 @@ import { connect } from 'react-redux';
 
 import type { Element } from 'react';
 
-import { increment, decrement } from '../actions/counterActions';
+import { increment, decrement } from '../../state/counter';
 
 const mapStateToProps = (state) => ({
-  count: state.counter.count,
+  count: state.home.count,
 });
 
 type Props = {

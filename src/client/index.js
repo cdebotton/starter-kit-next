@@ -8,8 +8,7 @@ import { ApolloProvider } from 'react-apollo';
 import createHistory from 'history/createBrowserHistory';
 import { render } from 'react-dom';
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
-import configureStore from '../shared/configureStore';
-import '../shared/css/base.css';
+import configureStore from '../shared/state/configureStore';
 
 const rootEl = document.getElementById('app');
 const json: string = document.getElementById('__STATE__').textContent;
@@ -35,7 +34,7 @@ const client = new ApolloClient({
 const store = configureStore(client, initialState);
 
 const renderApp = (mount) => {
-  const App = require('../shared/components/App').default;
+  const App = require('../shared/components/app/App').default;
 
   render(
     <ApolloProvider store={store} client={client}>
@@ -51,7 +50,7 @@ renderApp(rootEl);
 
 if (module.hot) {
   // $FlowIgnore: suppressing this error as flow doesn't recognize module.hot
-  module.hot.accept('../shared/components/App', () => {
+  module.hot.accept('.../shared/components/app/App', () => {
     renderApp(rootEl);
   });
 }
