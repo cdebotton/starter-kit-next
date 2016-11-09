@@ -10,6 +10,7 @@ import type { Element } from 'react';
 import Home from './Home';
 import Entries from './Entries';
 import Users from './Users';
+import Admin from './Admin';
 
 import { root, navigation } from '../css/layout.css';
 import { activeLink, h1 } from '../css/typography.css';
@@ -33,6 +34,7 @@ const App = (props: Props): Element<any> => (
     <Match pattern="/" exactly component={Home} />
     <Match pattern="/entries" component={Entries} />
     <Match pattern="/users" component={Users} />
+    <Match pattern="/admin" component={Admin} />
     <Miss
       render={() => (
         <div>

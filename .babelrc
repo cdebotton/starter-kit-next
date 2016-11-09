@@ -3,7 +3,11 @@
     "loose": true
   }]],
   "plugins": [
-    "transform-flow-strip-types"
+    "transform-flow-strip-types",
+    ["transform-runtime", {
+      "polyfill": false,
+      "regenerator": true
+    }]
   ],
   "env": {
     "dev": {

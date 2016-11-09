@@ -7,7 +7,7 @@ import Router from 'react-router/BrowserRouter';
 import { ApolloProvider } from 'react-apollo';
 import createHistory from 'history/createBrowserHistory';
 import { render } from 'react-dom';
-import ApolloClient from 'apollo-client';
+import ApolloClient, { createNetworkInterface } from 'apollo-client';
 import configureStore from '../shared/configureStore';
 import '../shared/css/base.css';
 
@@ -16,7 +16,21 @@ const json: string = document.getElementById('__STATE__').textContent;
 const initialState = JSON.parse(json);
 const history = createHistory();
 
-const client = new ApolloClient();
+const networkInterface = createNetworkInterface({ uri: '/graphql' });
+networkInterface.use([{
+  applyMiddleware(req, next) {
+    if (!req.options.headers) {
+      req.options.headers = {};
+    }
+
+    req.options.headers.authorization = localStorage.getItem('token') || null;
+    next();
+  },
+}]);
+
+const client = new ApolloClient({
+  networkInterface,
+});
 
 const store = configureStore(client, initialState);
 

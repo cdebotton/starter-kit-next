@@ -1,5 +1,6 @@
 // Update with your config settings.
 
+require('babel-register');
 require('dotenv').config();
 
 const DATABASE_URL = process.env.DATABASE_URL;

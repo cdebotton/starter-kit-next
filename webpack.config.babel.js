@@ -42,7 +42,7 @@ const babelLoader = {
   loader: {
     loader: 'babel',
     query: {
-      presets: ['latest', 'react', 'stage-0', ['env', {
+      presets: [['env', {
         targets: {
           browsers: ['last 2 versions'],
         },
